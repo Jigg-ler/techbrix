@@ -1,0 +1,792 @@
+/* These codes are developed by BSCpE 3-5's Mamink_mink Monkeys group; AY 2021-2022. */
+
+:root {
+  /* Website Pallete */
+  --demi-black: #262626;
+  --demi-gray: #666;
+  --neon-green: #cf6;
+  --pastel-white: #faf8f6;
+  --pink: #e741f1;
+  --purple: #7340a0;
+
+  --nav-width: 11vw;
+}
+
+/* Local Fonts */
+@font-face {
+  font-family: "Inter - Medium";
+  src: url("/static/assets/gfx/fonts/Inter - Medium.woff") format("woff");
+}
+@font-face {
+  font-family: "Lemon Milk - Bold";
+  src: url("/static/assets/gfx/fonts/Lemon Milk - Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "Lemon Milk - Medium";
+  src: url("/static/assets/gfx/fonts/Lemon Milk - Medium.woff") format("woff");
+}
+@font-face {
+  font-family: "Lemon Milk - Regular";
+  src: url("/static/assets/gfx/fonts/Lemon Milk - Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Montserrat - SemiBold";
+  src: url("/static/assets/gfx/fonts/Montserrat - SemiBold.woff") format("woff");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: var(--demi-black);
+  background: url("/static/assets/gfx/BG.png") no-repeat center center fixed;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+section img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Navigation bar */
+.nav-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navbar {
+  background: #ad40c8;
+  background: linear-gradient(0deg, #7340a0 0%, #e741f1 100%);
+  padding: calc(var(--nav-width) * 0.33);
+  width: var(--nav-width);
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-right: calc(100vw * 0.005) solid var(--neon-green);
+}
+
+.navbar-button {
+  background: var(--purple);
+  min-width: calc(var(--nav-width) * 0.33);
+  min-height: calc(var(--nav-width) * 0.33);
+  border-radius: calc((var(--nav-width) * 0.33) * 0.25);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.navbar-button:hover {
+  border: calc((var(--nav-width) * 0.33) * 0.1) solid var(--neon-green);
+}
+
+.navbar-button:active {
+  background: var(--pastel-white);
+}
+
+.navbar-title,
+.navbar-title span {
+  font-family: "Lemon Milk - Regular";
+  color: var(--neon-green);
+  writing-mode: tb;
+  letter-spacing: calc((100vh * 0.044) * 0.015);
+  min-width: calc(var(--nav-width) * 0.33);
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.15));
+  line-height: calc(var(--nav-width) * 0.33);
+  transform: scale(1.2, 1.5);
+  transform-origin: bottom;
+}
+
+.navbar-title span {
+  color: var(--pastel-white);
+}
+
+/* Navigation Panel */
+.nav-panel {
+  display: none;
+  background: #ad40c8;
+  background: linear-gradient(0deg, #7340a0 0%, #e741f1 100%);
+  position: fixed;
+  z-index: 100;
+  padding: calc(var(--nav-width) * 0.33);
+  min-width: calc(100vw - var(--nav-width));
+  height: 100vh;
+  justify-content: right;
+  align-items: center;
+  right: 0;
+}
+.nav-panel ol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  transform: scale(1.7, 1.3);
+  transform-origin: right;
+  max-height: calc(100vh ((100vh * 0.1666) * 2));
+}
+
+.nav-panel ol li span {
+  font-family: "Lemon Milk - Bold", sans-serif;
+  display: block;
+  font-size: max((var(--nav-width) * 0.1));
+  text-align: right;
+  color: var(--pastel-white);
+  margin-top: 1em;
+}
+
+.nav-panel a {
+  font-family: "Lemon Milk - Regular", sans-serif;
+  color: var(--neon-green);
+  font-size: max((var(--nav-width) * 0.37));
+  transition: all 0.5s;
+}
+
+.nav-panel a:hover {
+  background-color: var(--neon-green);
+  color: var(--pink);
+}
+
+.nav-panel ol li a.nav-active {
+  color: var(--pastel-white);
+}
+
+.nav-panel ol li a.nav-active:hover {
+  color: var(--pink);
+  background-color: var(--pastel-white);
+}
+
+/* Navigation Button */
+
+:root {
+  --button-width: 3.6vw;
+  --button-height: calc(var(--button-width) * 0.8);
+  --rectangle-height: calc(var(--button-width) * 0.1);
+  --rectangle-radius: calc(var(--button-width) * 0.04);
+  --translate: calc(var(--button-width) * 0.17);
+  --transition: 0.65s;
+}
+
+.fancy-burger {
+  position: relative;
+  width: var(--button-width);
+  height: var(--button-height);
+  border: 0;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+.rectangle {
+  position: absolute;
+  height: var(--rectangle-height);
+  background: var(--pastel-white);
+  border-radius: var(--rectangle-radius);
+  transition: transform var(--transition);
+}
+.rectangle--small {
+  width: calc(var(--button-width) / 2);
+}
+.rectangle--top {
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+.rectangle--top.open {
+  transform: translateX(var(--translate)) rotate(45deg);
+}
+.rectangle--middle {
+  top: 50%;
+  left: 0;
+  width: var(--button-width);
+  transform: translatey(-50%);
+}
+.rectangle--middle.open {
+  transform: translatey(-50%) rotate(-45deg);
+}
+.rectangle--bottom {
+  bottom: 0;
+  right: 0;
+  transform-origin: bottom right;
+}
+.rectangle--bottom.open {
+  transform: translateX(calc(-1 * var(--translate))) rotate(45deg);
+}
+
+/* Horizontal Scroll */
+.content {
+  width: 100vw;
+  height: 100vh;
+}
+.hscroll-content {
+  display: flex;
+  flex-direction: row;
+  width: 400vw;
+  transform: rotate(90deg) translateY(-100vh);
+  transform-origin: top left;
+}
+.hscroll-wrapper {
+  width: 100vh;
+  height: 100vw;
+  transform: rotate(-90deg) translateX(-100vh);
+  transform-origin: top left;
+  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.content-w {
+  display: block;
+  height: 100vh;
+  width: 89vw;
+  float: right;
+  justify-content: flex-end;
+  align-items: right;
+  padding: 6.25vw;
+}
+
+.content-x {
+  display: block;
+  height: 100vh;
+  width: 89vw;
+  float: right;
+  justify-content: flex-end;
+  align-items: right;
+}
+
+.content-y {
+  display: block;
+  height: 100vh;
+  float: right;
+  justify-content: flex-end;
+  align-items: right;
+}
+
+.content-title {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.content-title h2 {
+  font-family: "Lemon Milk - Regular";
+  color: var(--pink);
+  letter-spacing: 1.5vh;
+  min-width: calc(var(--nav-width) * 0.33);
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.2));
+  line-height: calc(var(--nav-width) * 0.33);
+  margin-bottom: 3vh;
+}
+
+.content-title h1 {
+  font-family: "Lemon Milk - Bold";
+  color: var(--neon-green);
+  letter-spacing: 3vh;
+  min-width: calc(var(--nav-width) * 0.33);
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.5));
+  line-height: calc(var(--nav-width) * 0.33);
+  margin-bottom: 5vh;
+}
+
+.button-w {
+  margin-top: 3vh;
+}
+
+.content-title button {
+  background-color: var(--neon-green);
+  border: none;
+  color: var(--pink);
+  padding: 0.5vh 2vh;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Lemon Milk - Medium";
+  font-size: max((var(--nav-width) * 0.125));
+  letter-spacing: 2vw;
+  margin-right: -1vw;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.content-title button:hover {
+  background-color: var(--pink);
+  color: var(--neon-green);
+}
+
+.content-title button span {
+  letter-spacing: 0vw;
+  font-family: "Lemon Milk - Medium";
+}
+
+.scroll-btn {
+  background-color: var(--pastel-white);
+  border: none;
+  color: var(--pink);
+  padding: 0.5vh 2vh;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Lemon Milk - Medium";
+  font-size: max((var(--nav-width) * 0.125));
+  letter-spacing: 0;
+  margin-right: -1vw;
+  cursor: pointer;
+  float: right;
+  transition: all 0.5s;
+}
+
+.scroll-btn:hover {
+  background-color: var(--pink);
+  color: var(--pastel-white);
+  transform: translateX(1.5vh);
+}
+
+.child1,
+.child2 {
+}
+.child1 {
+  padding: 5vw;
+  overflow: hidden;
+}
+.child2 {
+  border-top: 0.5vw solid var(--pink);
+  overflow: hidden;
+}
+
+.content-about {
+  background-color: var(--pastel-white);
+  background: url("/static/assets/gfx/BG-wp.png") repeat-x;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50vw;
+  height: 100%;
+  border-left: 0.5vw solid var(--pink);
+  border-right: 0.5vw solid var(--pink);
+}
+
+.child1 h1 {
+  font-family: "Lemon Milk - Bold";
+  color: var(--pink);
+  letter-spacing: calc((100vh * 0.044) * 0.015);
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.2));
+  transform: scale(1.5, 1.2);
+  transform-origin: left;
+  margin-bottom: 5vh;
+}
+
+.child1 p {
+  font-family: "Inter - Medium", sans-serif;
+  color: var(--pink);
+  font-size: max((var(--nav-width) * 0.1));
+  text-align: justify;
+  line-height: 3vh;
+}
+
+.child2 h1 marquee {
+  font-family: "Lemon Milk - Regular";
+  color: var(--pink);
+  letter-spacing: calc((100vh * 0.044) * 0.015);
+  min-width: calc(var(--nav-width) * 0.33);
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.5));
+  font-weight: lighter;
+  transform: scale(1.5, 1.2);
+  transform-origin: left;
+  line-height: 18vh;
+}
+
+.content-staff {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: var(--neon-green);
+  width: 100vw;
+  height: 100%;
+  border-left: 0.5vw solid var(--pink);
+  border-right: 0.5vw solid var(--pink);
+  overflow: hidden;
+}
+
+.staff1 {
+  border-right: 0.5vw solid var(--pink);
+}
+
+.staff1 h1 marquee {
+  font-family: "Lemon Milk - Regular";
+  color: var(--pink);
+  letter-spacing: calc((100vh * 0.044) * 0.015);
+  height: 100%;
+  font-size: max((var(--nav-width) * 0.5));
+  font-weight: lighter;
+  transform: scale(1.2, 1.5);
+  transform-origin: top;
+  line-height: 20vh;
+  writing-mode: tb;
+}
+
+.staff2 {
+  background-color: var(--pastel-white);
+  background: url("/static/assets/gfx/BG-gw.png") repeat-x;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5vw;
+  width: 100%;
+}
+
+.staff2 h1 {
+  font-family: "Lemon Milk - Regular";
+  color: var(--pink);
+  min-width: 50vw;
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.08));
+  transform: scale(1.5, 1.2);
+  transform-origin: left;
+  margin-bottom: 2.5vh;
+}
+
+.staff2 div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.staff2 div span {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 96%;
+  width: 49%;
+}
+
+.divider {
+  border-bottom: 0.5vh solid var(--pink);
+  margin-bottom: 2.5vh;
+  align-items: center;
+}
+
+.divider img {
+  border-radius: 100%;
+  transition: all 0.5s;
+}
+
+.divider img:hover {
+  background-color: var(--pastel-white);
+  transform: translateY(-1.5vh);
+}
+
+.staff2 div span span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  border-bottom: none;
+}
+
+span h4 {
+  font-family: "Lemon Milk - Bold", sans-serif;
+  color: var(--purple);
+  letter-spacing: calc((100vh * 0.044) * 0.015);
+  min-width: calc(var(--nav-width) * 0.33);
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.175));
+  font-weight: lighter;
+  transform: scale(1.5, 1.2);
+  transform-origin: left;
+}
+
+span h5 {
+  font-family: "Inter - Medium", sans-serif;
+  color: var(--demi-gray);
+  min-width: calc(var(--nav-width) * 0.33);
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.1));
+  line-height: 3em;
+}
+
+span h6 {
+  font-family: "Lemon Milk - Medium", sans-serif;
+  color: var(--pink);
+  letter-spacing: calc((100vh * 0.044) * 0.015);
+  font-size: max((var(--nav-width) * 0.075));
+  font-weight: lighter;
+  transform: scale(1.5, 1.2);
+  transform-origin: left;
+  background-color: var(--pastel-white);
+  padding: 0.3em;
+  width: fit-content;
+  transition: all 0.5s;
+}
+
+span h6:hover {
+  color: var(--pastel-white);
+  background-color: var(--pink);
+  cursor: pointer;
+}
+
+.content-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--pastel-white);
+  width: 50vw;
+  height: 100%;
+  border-left: 0.5vw solid var(--pastel-white);
+  border-right: 0.5vw solid var(--pastel-white);
+  overflow: auto;
+}
+
+.back-btn {
+  position: fixed;
+  background-color: var(--neon-green);
+  border: none;
+  color: var(--pink);
+  padding: 0.5vh 2vh;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Lemon Milk - Medium";
+  font-size: max((var(--nav-width) * 0.125));
+  letter-spacing: 0;
+  margin-right: -1vw;
+  cursor: pointer;
+  margin: 5vw;
+  bottom: 0;
+  right: 50vw;
+  transition: all 0.5s;
+}
+
+.back-btn:hover {
+  background-color: var(--pink);
+  color: var(--neon-green);
+  transform: translateX(-1.5vh);
+}
+
+.footer1 {
+  display: flex;
+  flex-direction: column;
+  padding: 5vw;
+  justify-content: space-evenly;
+  margin: auto 0;
+  overflow: hidden;
+}
+
+.footer1 span h1 {
+  font-family: "Lemon Milk - Regular";
+  color: var(--pink);
+  min-width: 50vw;
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.08));
+  line-height: calc(var(--nav-width) * 0.45);
+  transform: scale(1.5, 1.2);
+  transform-origin: left;
+}
+
+.footer2 {
+  overflow: hidden;
+  background-color: var(--pink);
+}
+
+hr {
+  border: 0;
+  height: 0.25vh;
+  background: var(--pastel-white);
+}
+
+.footer3 {
+  height: 20vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.footer3 span {
+  width: 30%;
+}
+
+.footer3 span p,
+.footer3 span a {
+  font-family: "Lemon Milk - Medium";
+  min-width: calc(var(--nav-width) * 0.33);
+  min-height: calc(100vh * 0.044);
+  line-height: calc(var(--nav-width) * 0.25);
+  transform: scale(1.5, 1.2);
+  transform-origin: left;
+  font-weight: normal;
+  letter-spacing: 0.075em;
+}
+
+.footer3 span p {
+  font-size: max((var(--nav-width) * 0.07));
+  color: var(--pastel-white);
+}
+
+.footer3 span a {
+  font-size: max((var(--nav-width) * 0.1));
+  color: var(--neon-green);
+  transition: all 0.5s;
+  padding: 0.3em;
+}
+
+.footer3 span a:hover {
+  background-color: var(--neon-green);
+  color: var(--pink);
+}
+
+.credits {
+  font-family: "Lemon Milk - Regular";
+  color: var(--pastel-white);
+  min-width: 50vw;
+  min-height: calc(100vh * 0.044);
+  font-size: max((var(--nav-width) * 0.08));
+  line-height: calc(var(--nav-width) * 0.45);
+  transform: scale(1.5, 1.2);
+  transform-origin: left;
+  margin-left: calc(var(--nav-width) * 0.45);
+  font-weight: normal;
+}
+
+/* Build PC */
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  background: transparent;
+  justify-content: center;
+  position: fixed;
+  padding: calc(var(--nav-width) * 0.33);
+  min-width: calc(100vw - var(--nav-width));
+  height: 100vh;
+  right: 0;
+}
+
+.components {
+}
+
+.fill-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.fill-form form {
+  display: block;
+  margin: calc(0.025 * 100vh);
+}
+
+.components h1 {
+  font-family: "Lemon Milk - Regular", sans-serif;
+  letter-spacing: calc((100vh * 0.044) * 0.2);
+  font-size: max((var(--nav-width) * 0.12));
+  color: var(--neon-green);
+  margin: calc((0.012 * 100vh));
+}
+
+.fill-form label {
+  font-family: "Lemon Milk - Regular", sans-serif;
+  letter-spacing: calc((100vh * 0.044) * 0.2);
+  font-size: max((var(--nav-width) * 0.12));
+  color: var(--pastel-white);
+  margin-right: calc(0.04583 * 100vh);
+}
+
+.fill-form input {
+  background-color: var(--pink);
+  border: none;
+  height: calc((0.0366 * 100vh));
+  text-align: center;
+  font-family: "Lemon Milk - Regular", sans-serif;
+  color: var(--pastel-white);
+  padding: calc(0.0244 * 100vh);
+  width: calc(0.29 * 100vw);
+}
+
+.fill-form input::placeholder {
+  color: var(--pastel-white);
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: calc(0.3 * 100vw);
+  align-items: flex-end;
+}
+
+.buttons {
+  border-bottom: calc(100vw * 0.005) solid var(--neon-green);
+  margin-bottom: calc(var(--nav-width) * 0.2);
+}
+
+.price button,
+.price a button {
+  display: block;
+  background-color: var(--neon-green);
+  border: none;
+  height: calc((0.05 * 100vh));
+  text-align: center;
+  font-family: "Lemon Milk - Regular", sans-serif;
+  color: var(--pink);
+  width: calc(0.25 * 100vw);
+  margin: calc(0.025 * 100vh);
+}
+.price button:active {
+  background-color: var(--pastel-white);
+}
+
+.total-price h1 {
+  font-family: "Lemon Milk - Medium", sans-serif;
+  color: var(--pastel-white);
+  font-size: max((var(--nav-width) * 0.4));
+}
+
+.total-price p {
+  font-family: "Lemon Milk - Medium", sans-serif;
+  color: var(--neon-green);
+  text-align: right;
+  font-size: max((var(--nav-width) * 0.12));
+}

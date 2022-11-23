@@ -1,0 +1,101 @@
+<!-- These codes are developed by BSCpE 3-5's Mamink_mink Monkeys group; AY 2021-2022. -->
+{% load static %}
+<!DOCTYPE html>
+
+<html lang=en-PH dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Mamink_mink Monkeys">
+        <meta name="copyright" content="Moneykiss Studio">
+        <meta name="description" content="Mamink_mink PC Builder is a free online PC builder by Mamink_mink Monkeys group.">
+        <meta name="keywords" content="PC, Builder, PC Builder">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/gfx/favicon.png' %}">
+        <link rel="stylesheet" href="{% static 'assets/styles/style.css' %}">
+
+        <title>Browse Builds | MMM PC Builder</title>
+    </head>
+
+    <body>
+
+        <div id="navbar" class="navbar">
+            <button class="fancy-burger">
+                <span class="rectangle rectangle--top rectangle--small"></span>
+                <span class="rectangle rectangle--middle"></span>
+                <span class="rectangle rectangle--bottom rectangle--small"></span>
+            </button>
+            <h1 class="navbar-title">Browse <span>Builds</span></h1>
+        </div>
+
+        <div id="navpnl"class="nav-panel">
+            <ol>
+                <li>
+                    <span>01</span>
+                    <a href="{% url 'index' %}">Home</a></li>
+                <li>
+                    <span>02</span>
+                    <a href="{% url 'build-pc' %}">Build PC</a></li>
+                <li>
+                    <span>03</span>
+                    <a href="#" class="nav-active">Browse Builds</a></li>
+                <li>
+                    <span>04</span>
+                    <a href="{% url 'sysreqs-db' %}">Sysreqs DB</a></li>
+            </ol>
+        </div>
+          
+        <div class="content-wrapper-col">
+            <input type="text" placeholder="Search">
+            <div class="cont-header">
+                <h1>Complete Builds</h1>
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Sort By ▼</button>
+                </div>
+            </div>
+            <section class="item-list">
+                <div class="grid-container">
+
+                    {% for build in BUILD_list %}
+
+                    <div class="grid-item" onclick="popupBuild(this)">
+
+                        <h1 class="buildName">{{ build.name }}</h1>
+                        <p class="buildPrice">Creator: {{ build.author }} <br> Estimated Price: PHP {{ build.price }}</p>
+
+                        <p class="buildSummary" style="display:none">
+                            <span class="highlight">CPU:</span> {{ build.CPU }}<br>
+                            <span class="highlight">CPU-COOLER:</span> {{ build.CPU_COOLER }}<br>
+                            <span class="highlight">MOTHERBOARD:</span> {{ build.MOTHERBOARD }}<br>
+                            <span class="highlight">MEMORY:</span> {{ build.RAM }}<br>
+                            <span class="highlight">STORAGE:</span> {{ build.STORAGE }}<br>
+                            <span class="highlight">VIDEO CARD:</span> {{ build.GPU }}<br>
+                            <span class="highlight">CASE:</span> {{ build.CASE }}<br>
+                            <span class="highlight">POWER SUPPLY:</span> {{ build.PSU }}<br>
+                        </p>
+                    </div>
+                    
+                    {% endfor %}
+                    
+                </div>
+            </section>
+        </div>
+        <!--POPUP-->
+        <div id="popupPnl" class="save-panel">
+            <div class="savetitle">
+                <marquee id="popup-title" direction="left" scrollamount="25">
+                    SAVE YOUR BUILD • SAVE YOUR BUILD
+                </marquee>
+            </div>
+            <div class="savecont">
+                <!--vv  build summary goes into here vv-->
+               <p id="text"></p>
+            </div>
+            <div class="savebtns">
+                <button type="button" onclick="closePopup()">Cancel</button>
+            </div>
+        </div>
+
+        <script src="{% static 'assets/scripts/script.js' %}"></script>
+    </body>
+</html>

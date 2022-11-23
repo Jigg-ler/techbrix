@@ -1,0 +1,227 @@
+<!-- These codes are developed by BSCpE 3-5's Mamink_mink Monkeys group; AY 2021-2022. -->
+{% load static %}
+<!DOCTYPE html>
+
+<html lang=en-PH dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Mamink_mink Monkeys">
+        <meta name="copyright" content="Moneykiss Studio">
+        <meta name="description" content="Mamink_mink PC Builder is a free online PC builder by Mamink_mink Monkeys group.">
+        <meta name="keywords" content="PC, Builder, PC Builder">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/x-icon" href="{% static 'assets/gfx/favicon.png' %}">
+        <link rel="stylesheet" href="{% static 'assets/styles/style.css' %}">
+
+        <title>Build PC | MMM PC Builder</title>
+    </head>
+
+    <body>
+
+        <div id="navbar" class="navbar">
+            <button class="fancy-burger">
+                <span class="rectangle rectangle--top rectangle--small"></span>
+                <span class="rectangle rectangle--middle"></span>
+                <span class="rectangle rectangle--bottom rectangle--small"></span>
+            </button>
+            <h1 class="navbar-title">Build <span>PC</span></h1>
+        </div>
+
+        <div id="navpnl"class="nav-panel">
+            <ol>
+                <li>
+                    <span>01</span>
+                    <a href="{% url 'index' %}">Home</a></li>
+                <li>
+                    <span>02</span>
+                    <a href="#" class="nav-active">Build PC</a></li>
+                <li>
+                    <span>03</span>
+                    <a href="{% url 'browse-builds' %}">Browse Builds</a></li>
+                <li>
+                    <span>04</span>
+                    <a href="{% url 'sysreqs-db' %}">Sysreqs DB</a></li>
+            </ol>
+        </div>
+          
+        <div class="content-wrapper">
+            <div class="components">
+                <h1>Components</h1>
+                <div class="fill-form">
+
+                    <form action="{% url 'save_pc' %}" method='POST' id="main-form">
+                        {% csrf_token %}
+
+                        <div>
+                            <label for="cpu">CPU</label>
+                            
+                            <select onchange="getPrice()" id="cpu" name="cpu" placeholder="Choose a CPU">
+                                    <option value="none!0">Choose a CPU</option>
+                                {% for cpu in CPU_list %} <!-- loop niya lang lahat ng available na objects galing sa list -->
+                                    <option value="{{cpu.model}}!{{cpu.price}}">{{cpu.model}} - PHP{{cpu.price}}</option> <!-- tapos lalagay niya sa option tag, yung value is model and price separated by "!" -->
+                                {% endfor %}
+                            </select>
+                        
+                        </div>
+
+                        <div>
+
+                            <label for="cpu-cooler">CPU Cooler</label>
+
+                            <select onchange="getPrice()" id="cpu-cooler" name="cpu-cooler" placeholder="Choose a CPU Cooler">
+                                <option value="none!0">Choose a CPU Cooler</option>
+                                {% for cooler in COOLER_list %} 
+                                    <option value="{{cooler.model}}!{{cooler.price}}">{{cooler.model}} - PHP{{cooler.price}}</option> 
+                                {% endfor %}
+                            </select>
+                    
+                        </div>
+                        
+                        <div>
+
+                            <label for="mobo">Motherboard</label>
+
+                            <select onchange="getPrice()" id="mobo" name="mobo" placeholder="Choose a Motherboard">
+                                    <option value="none!0">Choose a Motherboard</option>
+                                {% for mobo in MOBO_list %} 
+                                    <option value="{{mobo.model}}!{{mobo.price}}">{{mobo.model}} - PHP{{mobo.price}}</option> 
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+                    
+                        <div>
+
+                            <label for="memory">Memory</label>
+
+                            <select onchange="getPrice()" id="memory" name="memory" placeholder="Choose a Memory">
+                                    <option value="none!0">Choose a Memory</option>
+                                {% for ram in RAM_list %} 
+                                    <option value="{{ram.model}}!{{ram.price}}">{{ram.model}} - PHP{{ram.price}}</option> 
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label for="storage">Storage</label>
+
+                            <select onchange="getPrice()" id="storage" name="storage" placeholder="Choose a Storage">
+                                    <option value="none!0">Choose a Storage</option>
+                                {% for storage in STORAGE_list %} 
+                                    <option value="{{storage.model}}!{{storage.price}}">{{storage.model}} - PHP{{storage.price}}</option> 
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label for="gpu">Video Card</label>
+
+                            <select onchange="getPrice()" id="gpu" name="gpu" placeholder="Choose a Video Card">
+                                    <option value="none!0">Choose a Video Card</option>
+                                {% for gpu in GPU_list %} 
+                                    <option value="{{gpu.model}}!{{gpu.price}}">{{gpu.model}} - PHP{{gpu.price}}</option> 
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label for="case">Case</label>
+
+                            <select onchange="getPrice()" id="case" name="case" placeholder="Choose a Case">
+                                    <option value="none!0">Choose a Case</option>
+                                {% for case in CASE_list %} 
+                                    <option value="{{case.model}}!{{case.price}}">{{case.model}} - PHP{{case.price}}</option> 
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                        <div>
+
+                            <label for="psu">Power Supply</label>
+
+                            <select onchange="getPrice()" id="psu" name="psu" placeholder="Choose a PSU">
+                                    <option value="none!0">Choose a PSU</option>
+                                {% for psu in PSU_list %} 
+                                    <option value="{{psu.model}}!{{psu.price}}">{{psu.model}} - PHP{{psu.price}}</option> 
+                                {% endfor %}
+
+                            </select>
+
+                        </div>
+
+                    
+
+                </div>
+            </div>
+            <div class="price">
+                <div class="buttons">
+                        <button type="button" onclick="saveBtn_and_getPrice()">Save your build</button>
+                    <a href="{% url 'browse-builds' %}">
+                        <button type="button">Browse Builds</button>
+                </a>
+                    <a href="{% url 'sysreqs-db' %}">
+                        <button type="button">Browse sysreqs DB</button>
+                </a>
+                </div>
+                <div class="total-price">
+                    <h1 id="price-label">PHP 00</h1>
+                    <p>Estimated Price</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="savepnl" class="save-panel">
+                <marquee direction="left" scrollamount="25">
+                    SAVE YOUR BUILD • SAVE YOUR BUILD
+                </marquee>
+                <div class="savecont">
+                    <div class="col1">
+
+                            <label for="cpu">Build Name</label>
+                            <input type="text" id="build-name" name="build-name" placeholder="">
+                            <label for="cpu">Name of Builder</label>
+                            <input type="text" id="author" name="author" placeholder="">
+
+                    </form>
+
+                    </div>
+                    <div class="col2">
+                        <label for="cpu">Build Summary</label>
+                        <!-- <input type="text" id="cpu1" name="cpu" placeholder=""> inalis ko muna 'to hehe --> 
+
+                        <p id="summary"></p>
+
+                        <div class="savprice">
+
+                            <div>Estimated Price</div>
+                            <span id="price-label2">PHP 00.00</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="savebtns">
+                    <button type="submit" form="main-form">Save</button>
+                    <button type="button" onclick="closeSave()">Cancel</button>
+                </div>
+        </div>
+
+    </div>
+
+    <script src="{% static 'assets/scripts/script.js' %}">
+        
+    </script>
+    </body>
+</html>
