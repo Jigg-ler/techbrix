@@ -1,5 +1,5 @@
 """
-WSGI config for mmm_pcbuilder project.
+WSGI config for techbrix_pcbuilder project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
