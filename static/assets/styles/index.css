@@ -168,13 +168,15 @@ section img {
 .nav-panel a {
   font-family: "Lemon Milk - Regular", sans-serif;
   color: var(--neon-green);
-  font-size: max((var(--nav-width) * 0.37));
+  font-size: max((var(--nav-width) * 0.33));
   transition: all 0.5s;
+  border-radius: 20px;
 }
 
 .nav-panel a:hover {
   background-color: var(--neon-green);
   color: var(--pink);
+  border-radius: 20px;
 }
 
 .nav-panel ol li a.nav-active {
@@ -345,6 +347,7 @@ section img {
   margin-right: -1vw;
   cursor: pointer;
   transition: all 0.5s;
+  border-radius: 20px;
 }
 
 .content-title button:hover {
@@ -372,6 +375,7 @@ section img {
   cursor: pointer;
   float: right;
   transition: all 0.5s;
+  border-radius: 20px;
 }
 
 .scroll-btn:hover {
@@ -559,6 +563,7 @@ span h6 {
   padding: 0.3em;
   width: fit-content;
   transition: all 0.5s;
+  border-radius: 10px;
 }
 
 span h6:hover {
@@ -597,6 +602,7 @@ span h6:hover {
   bottom: 0;
   right: 50vw;
   transition: all 0.5s;
+  border-radius: 20px;
 }
 
 .back-btn:hover {
@@ -671,6 +677,7 @@ hr {
   color: var(--neon-green);
   transition: all 0.5s;
   padding: 0.3em;
+  border-radius: 10px;
 }
 
 .footer3 span a:hover {

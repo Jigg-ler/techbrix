@@ -155,6 +155,7 @@ img {
   color: var(--neon-green);
   font-size: max((var(--nav-width) * 0.37));
   transition: all 0.3s;
+  border-radius: 20px;
 }
 
 .nav-panel a:hover {
@@ -314,6 +315,7 @@ img {
   padding: calc(0.012 * 100vh);
   width: calc(0.29 * 100vw);
   transition: 0.3s;
+  border-radius: 10px;
 }
 
 .fill-form select:hover {
@@ -346,6 +348,8 @@ img {
   padding: calc(0.012 * 100vh);
   width: calc(0.29 * 100vw);
   transition: all 0.3s;
+  border-radius: 20px;
+  margin-bottom: 40px;
 }
 
 #summary:hover {
@@ -382,6 +386,7 @@ img {
   margin: calc(0.025 * 100vh);
   transition: all 0.3s;
   cursor: pointer;
+  border-radius: 20px;
 }
 
 .price button:hover {
@@ -472,6 +477,7 @@ img {
   width: calc(0.3 * 100vw);
   margin-bottom: calc(0.12 * 100vh);
   transition: all 0.3s;
+  border-radius: 20px;
 }
 
 .save-panel input:hover {
@@ -503,6 +509,7 @@ img {
   font-size: max((var(--nav-width) * 0.17));
   font-weight: bold;
   margin: calc(0.025 * 100vh);
+  border-radius: 20px;
 }
 
 .savebtns {
@@ -523,6 +530,7 @@ img {
   margin: calc(0.025 * 100vh) auto;
   cursor: pointer;
   transition: all 0.3s;
+  border-radius: 20px;
 }
 
 .savebtns button:hover {
@@ -530,13 +538,6 @@ img {
   color: var(--pink);
 }
 
-.col2 {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: right;
-}
 
 .col2 input {
   height: calc((0.2 * 100vh));
@@ -584,6 +585,7 @@ img {
   border-bottom: calc(100vw * 0.005) solid var(--neon-green);
   width: calc(0.375 * 100vw);
   margin: 0 auto;
+
 }
 .content-wrapper-col input::placeholder {
   color: var(--pastel-white);
@@ -615,6 +617,7 @@ img {
   width: calc(0.15 * 100vw);
   border: calc(var(--nav-width) * 0.04) solid var(--neon-green);
   color: var(--neon-green);
+  border-radius: 20px;
 }
 
 .dropdown button:active {
@@ -643,6 +646,7 @@ img {
   height: 95%;
   cursor: pointer;
   transition: all 0.3s;
+  border-radius: 20px;
 }
 
 .highlight {
