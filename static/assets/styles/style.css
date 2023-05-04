@@ -632,7 +632,7 @@ img {
 .grid-container {
   display: grid;
   grid-template-columns: 50% auto;
-  grid-auto-rows: calc(0.344 * 100vh);
+  grid-auto-rows: calc(0.32 * 100vh);
 }
 
 .grid-item {
