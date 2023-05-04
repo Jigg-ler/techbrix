@@ -75,3 +75,6 @@ def sysreqsdb(request):
     APPLICATION_list = APPLICATION.objects.all()
 
     return render(request, 'sysreqs-db.html', { 'APPLICATION_list' : APPLICATION_list})
+
+def ar(request):
+    return render(request, 'ar.html')
