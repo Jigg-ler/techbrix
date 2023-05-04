@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href='output.css'>
+    <link rel="stylesheet" href="{% static 'assets/styles/output.css' %}">
     <title>AR Guide</title>
 </head>
 <body>
 
 
-    <div  class="bg-purple flex ">
-        <h1 class="bg-yellow-800 flex-1"> hello world </h1>
+    <div  class="bg-purple flex h-screen ">
+        <h1 class=" text-neon-green font-bold flex-1"> hello world </h1>
     </div>
 </body>
 </html>

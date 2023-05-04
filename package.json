@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build-twcss": "npx tailwindcss -i ./src/input.css -o ./pages/output.css --watch"
+    "build-twcss": "npx tailwindcss -i ./src/input.css -o ./static/assets/styles/output.css --watch"
   },
   "dependencies": {
     "tailwind": "^4.0.0"
