@@ -59,7 +59,7 @@
                             <select onchange="getPrice()" id="cpu" name="cpu" placeholder="Choose a CPU">
                                     <option value="none!0">Choose a CPU</option>
                                 {% for cpu in CPU_list %} <!-- loop niya lang lahat ng available na objects galing sa list -->
-                                    <option value="{{cpu.model}}!{{cpu.price}}!{{cpu.socket}}">{{cpu.model}} - PHP{{cpu.price}}</option> <!-- tapos lalagay niya sa option tag, yung value is model and price separated by "!" -->
+                                    <option value="{{cpu.model}}!{{cpu.price}}!{{cpu.socket}}!{{cpu.gen_code}}">{{cpu.model}} - PHP{{cpu.price}}</option> <!-- tapos lalagay niya sa option tag, yung value is model and price separated by "!" -->
                                 {% endfor %}
                             </select>
                         
@@ -72,7 +72,7 @@
                             <select onchange="getPrice()" id="cpu-cooler" name="cpu-cooler" placeholder="Choose a CPU Cooler">
                                 <option value="none!0">Choose a CPU Cooler</option>
                                 {% for cooler in COOLER_list %} 
-                                    <option value="{{cooler.model}}!{{cooler.price}}">{{cooler.model}} - PHP{{cooler.price}}</option> 
+                                    <option value="{{cooler.model}}!{{cooler.price}}!{{cooler.socket}}">{{cooler.model}} - PHP{{cooler.price}}</option> 
                                 {% endfor %}
                             </select>
                     
@@ -85,7 +85,7 @@
                             <select onchange="getPrice()" id="mobo" name="mobo" placeholder="Choose a Motherboard">
                                     <option value="none!0">Choose a Motherboard</option>
                                 {% for mobo in MOBO_list %} 
-                                    <option value="{{mobo.model}}!{{mobo.price}}">{{mobo.model}} - PHP{{mobo.price}}</option> 
+                                    <option value="{{mobo.model}}!{{mobo.price}}!{{mobo.socket}}!{{mobo.gen}}!{{mobo.max_mem}}!{{mobo.formfactor}}">{{mobo.model}} - PHP{{mobo.price}}</option> 
                                 {% endfor %}
 
                             </select>
@@ -99,7 +99,7 @@
                             <select onchange="getPrice()" id="memory" name="memory" placeholder="Choose a Memory">
                                     <option value="none!0">Choose a Memory</option>
                                 {% for ram in RAM_list %} 
-                                    <option value="{{ram.model}}!{{ram.price}}">{{ram.model}} - PHP{{ram.price}}</option> 
+                                    <option value="{{ram.model}}!{{ram.price}}!{{ram.capacity}}">{{ram.model}} - PHP{{ram.price}}</option> 
                                 {% endfor %}
 
                             </select>
