@@ -6,6 +6,45 @@ const btn = document.querySelector(".fancy-burger");
 var navpnl = document.getElementById("navpnl");
 var navbtn = document.getElementById("navbar");
 
+function get_component_model(component) {
+  var component_model = component.split("!");
+  return component_model[0];
+}
+
+function get_component_price(component) {
+  var component_price = component.split("!");
+  return parseInt(component_price[1]);
+}
+
+function get_component_socket(component){
+  var component_socket = component.split("!");
+  return component_socket[2];
+}
+
+function get_component_gencode(component) {
+  var component_socket = component.split("!");
+  return component_socket[3];
+}
+
+function get_component_max_memory(component) {
+  var component_socket = component.split("!");
+  return component_socket[4];
+}
+
+function get_all_selected_component() {
+  var cpu_selected = document.getElementById("cpu").value;
+  var cooler_selected = document.getElementById("cpu-cooler").value;
+  var mobo_selected = document.getElementById("mobo").value;
+  var memory_selected = document.getElementById("memory").value;
+  var storage_selected = document.getElementById("storage").value;
+  var gpu_selected = document.getElementById("gpu").value;
+  var case_selected = document.getElementById("case").value;
+  var psu_selected = document.getElementById("psu").value;
+  
+  var parts_selected = [cpu_selected, cooler_selected, mobo_selected, memory_selected, storage_selected, gpu_selected, case_selected, psu_selected];
+  return parts_selected
+}
+
 btn.addEventListener("click", () => {
   if (navbtn.style["border-right"] === "calc(100vw * 0.005) solid var(--neon-green)") {
     navbtn.style["border-right"] = "none";
@@ -27,22 +66,10 @@ function saveBtn() {
     savpnl.style.display="none";}
 
     var parts_summary = "";
-    var temporary = "";
-
-    var cpu_selected = document.getElementById("cpu").value; //yung value is in model!price format
-    var cooler_selected = document.getElementById("cpu-cooler").value;
-    var mobo_selected = document.getElementById("mobo").value;
-    var memory_selected = document.getElementById("memory").value;
-    var storage_selected = document.getElementById("storage").value;
-    var gpu_selected = document.getElementById("gpu").value;
-    var case_selected = document.getElementById("case").value;
-    var psu_selected = document.getElementById("psu").value;
-
-    var parts_selected = [cpu_selected, cooler_selected, mobo_selected, memory_selected, storage_selected, gpu_selected, case_selected, psu_selected];
+    var parts_selected = get_all_selected_component();
     
     for (let x = 0; x < parts_selected.length; x++) {
-      temporary = parts_selected[x].split("!"); //split yung value from option tag then kunin yung first(0) element which is yung model
-      parts_summary += temporary[0] + "<br>";
+      parts_summary += (get_component_model(parts_selected[x]) + "<br>"); //split yung value from option tag then kunin yung first(0) element which is yung model
     }
     
     document.getElementById("summary").innerHTML = parts_summary;
@@ -82,28 +109,14 @@ function closePopup() {
 }
 
 function getPrice() {
-    
-    var tempPrice = "";
-    var totalPrice = 0;
+  var totalPrice = 0;
+  var parts_selected = get_all_selected_component();
 
-    var cpu_selected = document.getElementById("cpu").value;
-    var cooler_selected = document.getElementById("cpu-cooler").value;
-    var mobo_selected = document.getElementById("mobo").value;
-    var memory_selected = document.getElementById("memory").value;
-    var storage_selected = document.getElementById("storage").value;
-    var gpu_selected = document.getElementById("gpu").value;
-    var case_selected = document.getElementById("case").value;
-    var psu_selected = document.getElementById("psu").value
+  for (let y = 0; y < parts_selected.length; y++) {
+    totalPrice += get_component_price(parts_selected[y]);
+  }
 
-    var parts_selected = [cpu_selected, cooler_selected, mobo_selected, memory_selected, storage_selected, gpu_selected, case_selected, psu_selected];
-
-    for (let y = 0; y < parts_selected.length; y++) {
-      tempPrice =  parts_selected[y].split("!"); //split yung value then kunin yung second (1) element which is yung price
-      totalPrice += parseInt(tempPrice[1]);
-    }
-
-    document.getElementById("price-label").innerHTML = "PHP " + totalPrice;
-    
+  document.getElementById("price-label").innerHTML = "PHP " + totalPrice; 
 }
 
 function saveBtn_and_getPrice() {
