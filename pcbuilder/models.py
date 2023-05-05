@@ -4,14 +4,33 @@ from django.db import models
 class CPU(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
-    socket = models.CharField(max_length=10)
-    gen = models.IntegerField()
+
+    socket = models.CharField(max_length=10, default='NOT SET')
+    #gen = models.IntegerField() obsolete, kahit di na i-set
+
+    gen_code = models.CharField(max_length=10, default='NOT SET')
+
+    def __str__(self):
+        return self.model
+    
+    class Meta: 
+        verbose_name = "CPU"
+
 
 class MOTHERBOARD(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
-    chipset = models.CharField(max_length=10)
+
+    gen = models.CharField(max_length=10)
+    socket = models.CharField(max_length=10, default='NOT  SET')
+    max_mem = models.IntegerField(default=0)
     formfactor = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.model
+    
+    class Meta: 
+        verbose_name = "Motherboard"
 
 class RAM(models.Model):
     model = models.CharField(max_length=100)
@@ -19,24 +38,54 @@ class RAM(models.Model):
     capacity = models.IntegerField() #capacity in Gigabyte nalang
     max_speed = models.IntegerField() #speed in Mega hertz nalang
 
+    def __str__(self):
+        return self.model
+    
+    class Meta: 
+        verbose_name = "RAM"
+
 class CPU_COOLER(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
     socket = models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.model
+    
+    class Meta: 
+        verbose_name = "CPU Cooler"
+
 class GPU(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
+
+    def __str__(self):
+        return self.model
+    
+    class Meta: 
+        verbose_name = "GPU"
 
 class STORAGE(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
     form = models.CharField(max_length=10)
 
+    def __str__(self):
+        return self.model
+    
+    class Meta: 
+        verbose_name = "Storage"
+
 class PSU(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
     watts = models.IntegerField()
+
+    def __str__(self):
+        return self.model
+    
+    class Meta: 
+        verbose_name = "PSU"
 
 class CASE(models.Model):
     model = models.CharField(max_length=100)
@@ -46,6 +95,12 @@ class CASE(models.Model):
     #1 - mATX
     #2 - mATX, ATX
     #3 - ATX
+
+    def __str__(self):
+        return self.model
+    
+    class Meta: 
+        verbose_name = "Case"
 
 class SAVED_BUILD(models.Model): #obsolete
     name = models.CharField(max_length=100)
@@ -80,6 +135,12 @@ class MAIN_BUILD(models.Model):
     PSU = models.CharField(max_length=100)
     CASE = models.CharField(max_length=100)
     price = price = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+    
+    class Meta: 
+        verbose_name = "Main Build"
 
 class test_model(models.Model): #obsolete, pangtesting lang -kian
     procie = models.CharField(max_length=100)

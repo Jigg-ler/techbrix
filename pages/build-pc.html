@@ -59,7 +59,7 @@
                             <select onchange="getPrice()" id="cpu" name="cpu" placeholder="Choose a CPU">
                                     <option value="none!0">Choose a CPU</option>
                                 {% for cpu in CPU_list %} <!-- loop niya lang lahat ng available na objects galing sa list -->
-                                    <option value="{{cpu.model}}!{{cpu.price}}">{{cpu.model}} - PHP{{cpu.price}}</option> <!-- tapos lalagay niya sa option tag, yung value is model and price separated by "!" -->
+                                    <option value="{{cpu.model}}!{{cpu.price}}!{{cpu.socket}}">{{cpu.model}} - PHP{{cpu.price}}</option> <!-- tapos lalagay niya sa option tag, yung value is model and price separated by "!" -->
                                 {% endfor %}
                             </select>
                         
