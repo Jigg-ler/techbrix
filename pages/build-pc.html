@@ -48,6 +48,7 @@
         <div class="content-wrapper">
             <div class="components">
                 <h1>Components</h1>
+                
                 <div class="fill-form">
 
                     <form action="{% url 'save_pc' %}" method='POST' id="main-form">
@@ -161,12 +162,19 @@
                             </select>
 
                         </div>
-
                     
-
                 </div>
             </div>
+            <div>
+
+            </div>
             <div class="price">
+                
+                <div class="col3">
+                    <label for="checker" class="checker">Compatibility Checker</label>
+                    <p id="compCheck"></p>
+                </div>
+                
                 <div class="buttons">
                         <button type="button" onclick="saveBtn_and_getPrice()">Save your build</button>
                     <a href="{% url 'browse-builds' %}">
@@ -175,7 +183,6 @@
                     <a href="{% url 'sysreqs-db' %}">
                         <button type="button">Browse sysreqs DB</button>
                 </a>
-                        <button type="button">AR View</button>
                 </div>
                 <div class="total-price">
                     <h1 id="price-label">PHP 00</h1>
