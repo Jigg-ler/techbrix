@@ -61,7 +61,7 @@ body {
 img {
   max-width: 100%;
   height: auto;
-  width: auto\9;
+  width: auto;
 }
 
 /* Navigation bar */
@@ -131,6 +131,7 @@ img {
   align-items: center;
   right: 0;
 }
+
 .nav-panel ol {
   display: flex;
   flex-direction: column;
@@ -144,7 +145,7 @@ img {
 .nav-panel ol li span {
   font-family: "Lemon Milk - Bold", sans-serif;
   display: block;
-  font-size: max((var(--nav-width) * 0.09));
+  font-size: max((var(--nav-width) * 0.06));
   text-align: right;
   color: var(--pastel-white);
   margin-top: 1em;
@@ -153,8 +154,8 @@ img {
 .nav-panel a {
   font-family: "Lemon Milk - Regular", sans-serif;
   color: var(--neon-green);
-  font-size: max((var(--nav-width) * 0.37));
-  transition: all 0.3s;
+  font-size: max((var(--nav-width) * 0.33));
+  transition: all 0.5s;
   border-radius: 20px;
 }
 

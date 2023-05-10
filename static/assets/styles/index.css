@@ -146,6 +146,7 @@ section img {
   align-items: center;
   right: 0;
 }
+
 .nav-panel ol {
   display: flex;
   flex-direction: column;
@@ -159,7 +160,7 @@ section img {
 .nav-panel ol li span {
   font-family: "Lemon Milk - Bold", sans-serif;
   display: block;
-  font-size: max((var(--nav-width) * 0.1));
+  font-size: max((var(--nav-width) * 0.06));
   text-align: right;
   color: var(--pastel-white);
   margin-top: 1em;
