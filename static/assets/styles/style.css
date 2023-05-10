@@ -346,6 +346,29 @@ img {
   color: var(--pastel-white);
 }
 
+.fill-form button {
+  border-radius: 8px;
+  height: 40px;
+  width: 40px;
+  transform: translateY(11px);
+}
+
+.fill-form button:hover .popup{
+  opacity: 1;
+  display: block;
+}
+
+.popup {
+  max-width: 100px;
+  background-color: var(--pink);
+  padding: 1px 20px;
+  position: absolute;
+  bottom: 40px;
+  transition: all 0.25s ease;
+  opacity: 0;
+  display: none;
+  animation: in-animation 0.25s ease;
+}
 #summary {
   background-color: var(--pink);
   border: calc(100vw * 0.005) solid var(--neon-green);
