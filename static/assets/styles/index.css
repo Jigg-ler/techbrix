@@ -51,9 +51,10 @@
 body {
   background-color: var(--demi-black);
   background: url("/static/assets/gfx/BG.png") no-repeat center center fixed;
+  background-position: center;
+  background-size: cover;
   width: 100%;
   height: 100%;
-  position: fixed;
   top: 0;
   left: 0;
 }
@@ -400,6 +401,8 @@ section img {
 .content-about {
   background-color: var(--pastel-white);
   background: url("/static/assets/gfx/BG-wp.png") repeat-x;
+  background-position: center;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -473,6 +476,8 @@ section img {
 .staff2 {
   background-color: var(--pastel-white);
   background: url("/static/assets/gfx/BG-gw.png") repeat-x;
+  background-position: center;
+  background-size: contain;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

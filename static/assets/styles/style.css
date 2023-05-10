@@ -51,6 +51,7 @@
 body {
   background-color: var(--demi-black);
   background: url("/static/assets/gfx/BG-ex.png") no-repeat center center fixed;
+  background-size: cover;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -62,6 +63,7 @@ img {
   max-width: 100%;
   height: auto;
   width: auto;
+  border-radius: 10px;
 }
 
 /* Navigation bar */
@@ -296,12 +298,13 @@ img {
   font-size: max((var(--nav-width) * 0.12));
   color: var(--neon-green);
   margin: calc((0.012 * 100vh));
+  margin-left: 60px;
 }
 
 .checker {
   font-family: "Lemon Milk - Regular", sans-serif;
   letter-spacing: calc((100vh * 0.044) * 0.2);
-  font-size: max((var(--nav-width) * 0.12));
+  font-size: max((var(--nav-width) * 0.112));
   color: var(--neon-green);
 }
 
@@ -332,7 +335,7 @@ img {
 }
 
 .fill-form option {
-  background-color: var(--pink);
+  background-color: var(--pink); 
   border: none;
   text-align: center;
   font-family: "Lemon Milk - Regular", sans-serif;
@@ -347,10 +350,10 @@ img {
 }
 
 .fill-form button {
-  border-radius: 8px;
-  height: 40px;
-  width: 40px;
-  transform: translateY(11px);
+  transform: translateY(12px);
+  border-radius: 10px;
+  position: relative;
+  width: calc(0.29 * 8vw);
 }
 
 .fill-form button:hover .popup{
@@ -360,6 +363,7 @@ img {
 
 .popup {
   max-width: 100px;
+  height: auto;
   background-color: var(--pink);
   padding: 1px 20px;
   position: absolute;
@@ -368,7 +372,10 @@ img {
   opacity: 0;
   display: none;
   animation: in-animation 0.25s ease;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
+
 #summary {
   background-color: var(--pink);
   border: calc(100vw * 0.005) solid var(--neon-green);
@@ -397,7 +404,7 @@ img {
   font-size: max((var(--nav-width) * 0.07));
   color: var(--neon-green);
   padding: calc(0.012 * 100vh);
-  width: 485px;
+  width: calc(0.29 * 86vw);
   transition: all 0.3s;
   border-radius: 20px;
   margin-bottom: 40px;
