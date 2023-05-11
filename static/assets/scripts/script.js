@@ -138,3 +138,37 @@ function popupBuild(currentApp)  {
   var specs = currentApp.getElementsByClassName("buildSummary")[0].innerHTML;
   document.getElementById("text").innerHTML = specs;
 }
+
+function get_selected_component(componentId) {
+  var component_selected = document.getElementById(componentId).value;
+
+  return component_selected;
+}
+
+function searchComponentEasyPC(componentId) {
+  var component_model = get_component_model( get_selected_component(componentId) ).split(" "); //string of component model(name) > splits string by space > joins them with '+' for search
+  var baseUrlString = "https://easypc.com.ph/pages/search-results-page?q=";
+  console.log(component_model);
+
+  var temp = component_model.join("%20");
+    //console.log(temp);
+  var searchUrl = baseUrlString.concat(temp);
+    //console.log(searchUrl);
+  return searchUrl;
+
+  
+}
+
+function searchComponentDatablitz(componentId) {
+  var component_model = get_component_model( get_selected_component(componentId) ).split(" "); //string of component model(name) > splits string by space > joins them with '+' for search
+  var baseUrlString = "https://ecommerce.datablitz.com.ph/search?type=product&q=";
+
+  
+  var temp = component_model.join("+");
+    //console.log(temp);
+  var searchUrl = baseUrlString.concat(temp);
+    //console.log(searchUrl);
+  return searchUrl;
+
+
+}
