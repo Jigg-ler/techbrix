@@ -24,7 +24,11 @@ class MOTHERBOARD(models.Model):
     gen = models.CharField(max_length=10)
     socket = models.CharField(max_length=10, default='NOT  SET')
     max_mem = models.IntegerField(default=0)
-    formfactor = models.CharField(max_length=10)
+    formfactor = models.IntegerField(default=0)
+    #integer codes:
+    #1 - mITX
+    #2 - mATX
+    #3 - ATX
 
     def __str__(self):
         return self.model
@@ -90,10 +94,10 @@ class PSU(models.Model):
 class CASE(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
-    form_supp = models.IntegerField()
+    form_supp = models.IntegerField() 
     #integer codes:
-    #1 - mATX
-    #2 - mATX, ATX
+    #1 - mITX
+    #2 - mATX
     #3 - ATX
 
     def __str__(self):
