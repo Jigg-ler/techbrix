@@ -182,6 +182,36 @@ function searchComponentDatablitz(componentId) {
     pass //temporary pass muna. but it works naman :/
   }
   
+}
+
+function test_compatibility() {
+  
+  var cpu_model = get_component_model(document.getElementById("cpu"));
+  var mobo_model = get_component_model(document.getElementById("mobo"));
+  var memory_model = get_component_model(document.getElementById("memory"));
+
+  var cpu_gen = get_component_gencode(document.getElementById("cpu"));
+  var mobo_chipset = get_component_gencode(document.getElementById("mobo"));
+  var mobo_socket = get_component_socket(document.getElementById("mobo"));
+
+  var test_string = cpu_model + " " + cpu_gen + "<br>" + mobo_model + " " + mobo_chipset + "<br>";
+  document.getElementById("compCheck").value = test_string; //testing, pero di ko pa machange yung paragraph element
 
 
+  var success;
+  var need_update = false;
+  var is_intel = false;
+  var is_amd = false;
+
+  //aactivate lang siya kapag may laman na yung CPU, MOTHERBOARD, at MEMORY para may maicompare siya
+  if (cpu_model != "none" && mobo_model != "none" && memory_model != "none") {
+    //main block
+
+    document.getElementById("compCheck") = test_string;
+
+    if (mobo){
+      pass
+    }
+
+  }
 }

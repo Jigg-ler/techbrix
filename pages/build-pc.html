@@ -60,7 +60,7 @@
                         <div>
                             <label for="cpu">CPU</label>
                             
-                            <select onchange="getPrice()" id="cpu" name="cpu" placeholder="Choose a CPU">
+                            <select onchange="getPrice(); test_compatibility();" id="cpu" name="cpu" placeholder="Choose a CPU">
                                     <option value="none!0">Choose a CPU</option>
                                 {% for cpu in CPU_list %} <!-- loop niya lang lahat ng available na objects galing sa list -->
                                     <option value="{{cpu.model}}!{{cpu.price}}!{{cpu.socket}}!{{cpu.gen_code}}">{{cpu.model}} - PHP{{cpu.price}}</option> <!-- tapos lalagay niya sa option tag, yung value is model and price separated by "!" -->
@@ -108,7 +108,7 @@
 
                             <label for="mobo">Motherboard</label>
 
-                            <select onchange="getPrice()" id="mobo" name="mobo" placeholder="Choose a Motherboard">
+                            <select onchange="getPrice(); test_compatibility();" id="mobo" name="mobo" placeholder="Choose a Motherboard">
                                     <option value="none!0">Choose a Motherboard</option>
                                 {% for mobo in MOBO_list %} 
                                     <option value="{{mobo.model}}!{{mobo.price}}!{{mobo.socket}}!{{mobo.gen}}!{{mobo.max_mem}}!{{mobo.formfactor}}">{{mobo.model}} - PHP{{mobo.price}}</option> 
@@ -122,7 +122,7 @@
 
                             <label for="memory">Memory</label>
 
-                            <select onchange="getPrice()" id="memory" name="memory" placeholder="Choose a Memory">
+                            <select onchange="getPrice(); test_compatibility();" id="memory" name="memory" placeholder="Choose a Memory">
                                     <option value="none!0">Choose a Memory</option>
                                 {% for ram in RAM_list %} 
                                     <option value="{{ram.model}}!{{ram.price}}!{{ram.capacity}}">{{ram.model}} - PHP{{ram.price}}</option> 
@@ -197,7 +197,7 @@
                 
                 <div class="col3">
                     <label for="checker" class="checker">Compatibility Checker</label>
-                    <p id="compCheck"></p>
+                    <p id="compCheck">test</p>
                 </div>
                 
                 <div class="buttons">
