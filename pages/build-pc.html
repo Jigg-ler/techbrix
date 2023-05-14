@@ -57,51 +57,80 @@
                     <form action="{% url 'save_pc' %}" method='POST' id="main-form">
                         {% csrf_token %}
 
-                        <div>
-                            <label for="cpu">CPU</label>
+                        <div class="flex-column">
+                            <div class="flex-row">
+                                <label for="cpu">CPU</label>
+                                
+                                <select onchange="getPrice(); test_compatibility();" id="cpu" name="cpu" placeholder="Choose a CPU">
+                                        <option value="none!0">Choose a CPU</option>
+                                    {% for cpu in CPU_list %} <!-- loop niya lang lahat ng available na objects galing sa list -->
+                                        <option value="{{cpu.model}}!{{cpu.price}}!{{cpu.socket}}!{{cpu.gen_code}}">{{cpu.model}} - PHP{{cpu.price}}</option> <!-- tapos lalagay niya sa option tag, yung value is model and price separated by "!" -->
+                                    {% endfor %}
+                                </select>
                             
-                            <select onchange="getPrice(); test_compatibility();" id="cpu" name="cpu" placeholder="Choose a CPU">
-                                    <option value="none!0">Choose a CPU</option>
-                                {% for cpu in CPU_list %} <!-- loop niya lang lahat ng available na objects galing sa list -->
-                                    <option value="{{cpu.model}}!{{cpu.price}}!{{cpu.socket}}!{{cpu.gen_code}}">{{cpu.model}} - PHP{{cpu.price}}</option> <!-- tapos lalagay niya sa option tag, yung value is model and price separated by "!" -->
-                                {% endfor %}
-                            </select>
-                        
-                            
-                            <button type="button" id="button-datablitz" onclick=" window.open(href=searchComponentEasyPC('cpu'),'_blank')"> 
-                                <img src="/static/assets/gfx/easypc.png" />
-                                <div class="popup">
-                                    <p>Item is available.</p>
-                                </div>
-                            </button>
-                            
-                            <button type="button" id="button-datablitz" onclick=" window.open(href=searchComponentDatablitz('cpu'),'_blank')">
-                                <img src="/static/assets/gfx/easypc.png" />
-                                <div class="popup">
-                                    <p>Item is available.</p>
-                                </div>
-                            </button>
-                            <button type="button" id="button-easy">
-                                <img src="/static/assets/gfx/easypc.png" />
-                                <div class="popup">
-                                    <p>Item is available.</p>
-                                </div>
-                            </button>
-                                                       
+                                
+                                    <button type="button" class="collapsible-button" >Shopsxd</button>
+                                                        
+                            </div>
+                            <div class="collapsible-content">
+                                <button type="button" id="easypc" onclick=" window.open(href=searchComponentInStore('cpu', this.id),'_blank')"> 
+                                    <img src="/static/assets/gfx/easypc.png" />
+                                    <div class="popup">
+                                        <p>Item is available.</p>
+                                    </div>
+                                </button>
+                                
+                                <button type="button" id="datablitz" onclick=" window.open(href=searchComponentInStore('cpu', this.id),'_blank')">
+                                    <img src="/static/assets/gfx/easypc.png" />
+                                    <div class="popup">
+                                        <p>Item is available.</p>
+                                    </div>
+                                </button>
+                                <button type="button" id="pchub">
+                                    <img src="/static/assets/gfx/easypc.png" />
+                                    <div class="popup">
+                                        <p>Item is available.</p>
+                                    </div>
+                                </button>
+                            </div>
                         </div>
 
-                        <div>
-
-                            <label for="cpu-cooler">CPU Cooler</label>
-
-                            <select onchange="getPrice()" id="cpu-cooler" name="cpu-cooler" placeholder="Choose a CPU Cooler">
-                                <option value="none!0">Choose a CPU Cooler</option>
-                                {% for cooler in COOLER_list %} 
-                                    <option value="{{cooler.model}}!{{cooler.price}}!{{cooler.socket}}">{{cooler.model}} - PHP{{cooler.price}}</option> 
-                                {% endfor %}
-                            </select>
-
+                        <div class="flex=column">
+                            <div class="flex-row">
                             
+                                <label for="cpu-cooler">CPU Cooler</label>
+    
+                                <select onchange="getPrice()" id="cpu-cooler" name="cpu-cooler" placeholder="Choose a CPU Cooler">
+                                    <option value="none!0">Choose a CPU Cooler</option>
+                                    {% for cooler in COOLER_list %} 
+                                        <option value="{{cooler.model}}!{{cooler.price}}!{{cooler.socket}}">{{cooler.model}} - PHP{{cooler.price}}</option> 
+                                    {% endfor %}
+                                </select>
+    
+                                <button type="button" class="collapsible-button" >Shopsxd</button>   
+                                
+                            </div>
+                            <div class="collapsible-content">
+                                <button type="button" id="easypc" onclick=" window.open(href=searchComponentInStore('cpu-cooler', this.id),'_blank')"> 
+                                    <img src="/static/assets/gfx/easypc.png" />
+                                    <div class="popup">
+                                        <p>Item is available.</p>
+                                    </div>
+                                </button>
+                                
+                                <button type="button" id="datablitz" onclick=" window.open(href=searchComponentInStore('cpu-cooler', this.id),'_blank')">
+                                    <img src="/static/assets/gfx/easypc.png" />
+                                    <div class="popup">
+                                        <p>Item is available.</p>
+                                    </div>
+                                </button>
+                                <button type="button" id="pchub" onclick=" window.open(href=searchComponentInStore('cpu-cooler', this.id),'_blank')" >
+                                    <img src="/static/assets/gfx/easypc.png" />
+                                    <div class="popup">
+                                        <p>Item is available.</p>
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                         
                         <div>
@@ -254,7 +283,6 @@
     </div>
 
     <script src="{% static 'assets/scripts/script.js' %}">
-        
     </script>
     </body>
 </html>

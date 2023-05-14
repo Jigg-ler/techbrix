@@ -276,6 +276,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-self: right;
   height: 100%;
 }
 
@@ -349,16 +350,54 @@ img {
   color: var(--pastel-white);
 }
 
-.fill-form button {
-  transform: translateY(12px);
+.flex-row {
+  display: inline-flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.collapsible-content button {
   border-radius: 10px;
   position: relative;
   width: calc(0.29 * 8vw);
+  margin: 8px;
 }
 
-.fill-form button:hover .popup{
+.collapsible-content button:hover .popup{
   opacity: 1;
   display: block;
+}
+
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible-button {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 12px;
+  width: 10%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible-button:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.collapsible-content {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  align-content: right;
 }
 
 .popup {
@@ -367,13 +406,14 @@ img {
   background-color: var(--pink);
   padding: 1px 20px;
   position: absolute;
-  bottom: 40px;
+  
   transition: all 0.25s ease;
   opacity: 0;
   display: none;
   animation: in-animation 0.25s ease;
   border-radius: 5px;
   margin-bottom: 5px;
+  z-index: 1;
 }
 
 #summary {
