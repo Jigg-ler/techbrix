@@ -6,6 +6,22 @@ const btn = document.querySelector(".fancy-burger");
 var navpnl = document.getElementById("navpnl");
 var navbtn = document.getElementById("navbar");
 
+var coll = document.getElementsByClassName("collapsible-button");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.parentElement.nextElementSibling;
+    console.log(content)
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+}
+
 function get_component_model(component) {
   var component_model = component.split("!");
   return component_model[0];
@@ -145,26 +161,35 @@ function get_selected_component(componentId) {
   return component_selected;
 }
 
-function searchComponentEasyPC(componentId) {
+function searchComponentInStore(componentId, buttonId) {
   var component_model = get_component_model( get_selected_component(componentId) ).split(" "); //string of component model(name) > splits string by space > joins them with '+' for search
+  var baseUrlStrings = {
+    easypc: "https://easypc.com.ph/pages/search-results-page?q=",
+    datablitz: "https://ecommerce.datablitz.com.ph/search?type=product&q=",
+    pcexpress: "https://pcx.com.ph/?s=${}&id=120558&post_type=product",
+    pchub: "https://pchubonline.com/browse?q="
+  };
+  
+  console.log(buttonId);
   if (component_model != "none") {
-    var baseUrlString = "https://easypc.com.ph/pages/search-results-page?q=";
+    //var baseUrlString = "https://easypc.com.ph/pages/search-results-page?q=";
+    
     console.log(component_model);
 
     var temp = component_model.join("%20");
       //console.log(temp);
-    var searchUrl = baseUrlString.concat(temp);
+    var searchUrl = baseUrlStrings[buttonId].concat(temp);
       //console.log(searchUrl);
     return searchUrl;
   }
   
   else {
-    pass //temporary pass muna. but it works naman :/
+    pass; //temporary pass muna. but it works naman :/
   }
 
   
 }
-
+/*
 function searchComponentDatablitz(componentId) {
   var component_model = get_component_model( get_selected_component(componentId) ).split(" "); //string of component model(name) > splits string by space > joins them with '+' for search
   if (component_model != "none") {
@@ -179,10 +204,10 @@ function searchComponentDatablitz(componentId) {
   }
 
   else {
-    pass //temporary pass muna. but it works naman :/
+    pass; //temporary pass muna. but it works naman :/
   }
   
-}
+}*/
 
 function test_compatibility() {
   
