@@ -13,7 +13,6 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.parentElement.nextElementSibling;
-    console.log(content)
     if (content.style.maxHeight){
       content.style.maxHeight = null;
     } else {
@@ -163,24 +162,17 @@ function get_selected_component(componentId) {
 
 function searchComponentInStore(componentId, buttonId) {
   var component_model = get_component_model( get_selected_component(componentId) ).split(" "); //string of component model(name) > splits string by space > joins them with '+' for search
+  var temp = component_model.join("%20");
   var baseUrlStrings = {
-    easypc: "https://easypc.com.ph/pages/search-results-page?q=",
-    datablitz: "https://ecommerce.datablitz.com.ph/search?type=product&q=",
-    pcexpress: "https://pcx.com.ph/?s=${}&id=120558&post_type=product",
-    pchub: "https://pchubonline.com/browse?q="
+    easypc: `https://easypc.com.ph/pages/search-results-page?q=${temp}`,
+    datablitz: `https://ecommerce.datablitz.com.ph/search?type=product&q=${temp}`,
+    pcexpress: `https://pcx.com.ph/?s=${temp}&id=120558&post_type=product`,
+    pchub: `https://pchubonline.com/browse?q=${temp}`
   };
   
   console.log(buttonId);
   if (component_model != "none") {
-    //var baseUrlString = "https://easypc.com.ph/pages/search-results-page?q=";
-    
-    console.log(component_model);
-
-    var temp = component_model.join("%20");
-      //console.log(temp);
-    var searchUrl = baseUrlStrings[buttonId].concat(temp);
-      //console.log(searchUrl);
-    return searchUrl;
+    return baseUrlStrings[buttonId];
   }
   
   else {

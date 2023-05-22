@@ -359,11 +359,25 @@ img {
   flex-direction: column;
 }
 
+/* Style the collapsible content. Note: hidden by default */
+.collapsible-content {
+  display: flex;
+  padding: 0 18px;
+  background:  rgba(80,80,80,0.0);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  flex-direction: row-reverse;
+}
+
 .collapsible-content button {
   border-radius: 10px;
+  opacity: 1;
   position: relative;
+  border: none;
   width: calc(0.29 * 8vw);
   margin: 8px;
+  background: rgba(80,80,80,0.0);
 }
 
 .collapsible-content button:hover .popup{
@@ -374,31 +388,25 @@ img {
 
 /* Style the button that is used to open and close the collapsible content */
 .collapsible-button {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 12px;
-  width: 10%;
+  background-color: var(--pink);
   border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
+  text-align: center;
+  font-family: "Lemon Milk - Regular", sans-serif;
+  font-size: max((var(--nav-width) * 0.06));
+  color: var(--pastel-white);
+  padding: calc(0.005 * 100vh);
+  width: calc(0.29 * 10vw);
+  transition: 0.3s;
+  border-radius: 10px;
+  margin-left: calc(0.02 * 10vw)
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .collapsible-button:hover {
-  background-color: #ccc;
+
+.collapsible-button:hover {
+  background-color: var(--pastel-white);
+  color: var(--pink);
 }
 
-/* Style the collapsible content. Note: hidden by default */
-.collapsible-content {
-  padding: 0 18px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  align-content: right;
-}
 
 .popup {
   max-width: 100px;
