@@ -247,18 +247,20 @@ function test_compatibility() {
       if (cpu_gen.slice(-1) == "a"){
         is_amd = true;
       }
-
+      
+      //  chip set check
       for (let z = 0; z < mobo_chipset.length; z++) {
         if (cpu_gen == mobo_chipset[z]) {
           console.log("chipset matched!")
           success += 1;
         }
 
+        //  boards that might need BIOS update
         if (mobo_chipset[z] == "semi"){
           need_update = true;
         }
 
-        else{
+        else{ //  chipset mismatch catch
           console.log("chipset mismatch")
         }
       }
@@ -268,27 +270,39 @@ function test_compatibility() {
         document.getElementById("compCheck").innerHTML = cpu_model + " is incompatible with " + mobo_model;
       }
       else {
-        if (is_intel) {
-          if (need_update && parseInt(cpu_gen.slice(1)) % 2 == 1) {
+        if (is_intel) { //  need BIOS updated Intel boards
+          if (need_update && parseInt(cpu_gen.slice(0,-1)) % 2 == 1) {
             document.getElementById("compCheck").innerHTML = mobo_model + " might need BIOS update to work with " + cpu_model;
             console.log(success);
           }
-          else {
+          else { // no compatibility issues catch
             document.getElementById("compCheck").innerHTML = "no compatibility issues :D";
             console.log(success);
           }
 
         }
+
+        if (is_amd) { //  need BIOS update AMD boards, usually kasi 3000 series ng AMD yung kailangan ng update
+          if (need_update && parseInt(cpu_gen.slice(0)) == 3) {
+            document.getElementById("compCheck").innerHTML = mobo_model + " might need BIOS update to work with " + cpu_model;
+            console.log(success);
+          }
+
+          else { // no compatibility issues catch
+            document.getElementById("compCheck").innerHTML = "no compatibility issues :D";
+            console.log(success);
+          }
+        }
       }
 
     }
-    else {
+    else { // incompatible socket catch
       document.getElementById("compCheck").innerHTML = cpu_model + " is incompatible with " + mobo_model + "(socket mismatched)";
       console.log("socket mismatch")
     }
     
   }
-  else {
+  else { // if di pa naseselect yung 3 major components to be checked (cpu, mobo, ram)
     document.getElementById("compCheck").innerHTML = "";
   }
 
