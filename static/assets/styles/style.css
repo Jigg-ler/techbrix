@@ -307,6 +307,7 @@ img {
   letter-spacing: calc((100vh * 0.044) * 0.2);
   font-size: max((var(--nav-width) * 0.112));
   color: var(--neon-green);
+
 }
 
 .fill-form label {
@@ -810,6 +811,29 @@ img {
 .col-item:hover {
   background-color: #555;
 }
+
+/* AR */
+.img-QR1{
+  justify-content: space-between;
+  border: calc(var(--nav-width) * 0.10) solid var(--pink);
+  padding: calc(0.044 * 100vh);
+  width: 400px;
+  height: 400px;
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 40px;
+}
+
+.boxText{
+  font-size: 16px;
+  font-family: "Lemon Milk - Bold", sans-serif;
+  color: var(--pink);
+  align-self: center;
+  justify-content: center;
+  text-align:center
+}
+
 
 /* Responsive Styles (Mobile display) */
 @media screen and (min-width: 960px) {
