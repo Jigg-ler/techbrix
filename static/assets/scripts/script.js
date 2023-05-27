@@ -61,7 +61,7 @@ function get_all_selected_component() {
 }
 
 btn.addEventListener("click", () => {
-  if (navbtn.style["border-right"] === "calc(100vw * 0.005) solid var(--neon-green)") {
+  if (navbtn.style["border-right"] !== "none") {
     navbtn.style["border-right"] = "none";
     navpnl.style.display="flex";
     btn.querySelectorAll("span").forEach((span) => span.classList.add("open"));
