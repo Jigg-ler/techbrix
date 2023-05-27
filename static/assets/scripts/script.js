@@ -146,7 +146,7 @@ function saveBtn_and_getPrice() {
 
 function popupBuild(currentApp)  {
   var popupPnl = document.getElementById("popupPnl");
-  if (popupPnl.style["display"] === "none") {
+  if (popupPnl.style.display == "none" || " ") {
     popupPnl.style.display="flex";
   } else {
     popupPnl.style["background"] = "flex";
