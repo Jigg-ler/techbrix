@@ -24,8 +24,6 @@ class MOTHERBOARD(models.Model):
     gen = models.CharField(max_length=10)
     socket = models.CharField(max_length=10, default='NOT  SET')
     max_mem = models.IntegerField(default=0)
-    ddr_gen = models.CharField(max_length=15, default="NOT SET")
-
     formfactor = models.IntegerField(default=0)
     #integer codes:
     #1 - mITX
@@ -43,8 +41,6 @@ class RAM(models.Model):
     price = models.IntegerField()
     capacity = models.IntegerField() #capacity in Gigabyte nalang
     max_speed = models.IntegerField() #speed in Mega hertz nalang
-    ddr_gen = models.CharField(max_length=10, default="NOT SET")
-
 
     def __str__(self):
         return self.model

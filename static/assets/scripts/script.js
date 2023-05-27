@@ -43,14 +43,8 @@ function get_component_gencode(component) {
 
 function get_component_max_memory(component) {
   var component_socket = component.split("!");
-  return parseInt(component_socket[4]);
+  return component_socket[4];
 }
-
-function get_component_ddr_gen(component) { // for mobo and ram
-  var component_socket = component.split("!");
-  return component_socket[5];
-}
-
 
 function get_all_selected_component() {
   var cpu_selected = document.getElementById("cpu").value;
@@ -218,12 +212,6 @@ function test_compatibility() {
 
   var cpu_socket = get_component_socket(document.getElementById("cpu").value);
   var mobo_socket = get_component_socket(document.getElementById("mobo").value);
-
-  var mobo_max_mem = get_component_max_memory(document.getElementById("mobo").value);
-  var ram_max_mem = get_component_max_memory(document.getElementById("memory").value);
-
-  var mobo_ddr_gen = get_component_ddr_gen(document.getElementById("mobo").value).split("-");
-  var memory_ddr_gen = get_component_ddr_gen(document.getElementById("memory").value);
   
   //var test_string = cpu_model + " " + cpu_gen + "<br>" + mobo_model + " " + mobo_chipset + "<br>";
   
@@ -231,13 +219,9 @@ function test_compatibility() {
   
 
   var success = 0;
-  var mem_success = 0;
-
   var need_update = false;
   var is_intel = false;
   var is_amd = false;
-
-  var status = "";
 
 
   //aactivate lang siya kapag may laman na yung CPU, MOTHERBOARD, at MEMORY para may maicompare siya
@@ -275,66 +259,43 @@ function test_compatibility() {
 
       //  status generator
       if (success == 0) {
-        status = cpu_model + " is incompatible with " + mobo_model + "<br>";
+        document.getElementById("compCheck").innerHTML = cpu_model + " is incompatible with " + mobo_model;
       }
       else {
         if (is_intel) { //  need BIOS updated Intel boards
           if (need_update && parseInt(cpu_gen.slice(0,-1)) % 2 == 1) {
-            status = mobo_model + " might need BIOS update to work with " + cpu_model + "<br>";
+            document.getElementById("compCheck").innerHTML = mobo_model + " might need BIOS update to work with " + cpu_model;
             console.log(success);
           }
-          /*
           else { // no compatibility issues catch
             document.getElementById("compCheck").innerHTML = "no compatibility issues :D";
             console.log(success);
-          } */
+          }
 
         }
 
         if (is_amd) { //  need BIOS update AMD boards, usually kasi 3000 series ng AMD yung kailangan ng update
           if (need_update && parseInt(cpu_gen.slice(0)) == 3) {
-            status = mobo_model + " might need BIOS update to work with " + cpu_model + "<br>";
+            document.getElementById("compCheck").innerHTML = mobo_model + " might need BIOS update to work with " + cpu_model;
             console.log(success);
           }
 
-          /*
           else { // no compatibility issues catch
             document.getElementById("compCheck").innerHTML = "no compatibility issues :D";
             console.log(success);
-          } */
-          
+          }
         }
       }
 
     }
     else { // incompatible socket catch
-      status = cpu_model + " is incompatible with " + mobo_model + " (socket mismatched) <br>";
+      document.getElementById("compCheck").innerHTML = cpu_model + " is incompatible with " + mobo_model + "(socket mismatched)";
       console.log("socket mismatch")
-    }
-
-    // RAM check
-    for (let y = 0; y < mobo_ddr_gen.length; y++) {
-      if (memory_ddr_gen == mobo_ddr_gen[y]) {
-        mem_success += 1;
-      }
-    }
-
-    // status generator
-
-    if (mem_success == 0) {
-      status += mobo_model + " only supports " + mobo_ddr_gen + "<br>";
-    }
-
-    if (ram_max_mem > mobo_max_mem) {
-      status += mobo_model + " only supports " + mobo_max_mem + "gbs of RAM";
     }
     
   }
   else { // if di pa naseselect yung 3 major components to be checked (cpu, mobo, ram)
-    status = "";
+    document.getElementById("compCheck").innerHTML = "";
   }
 
-  document.getElementById("compCheck").innerHTML = status;
-  console.log(mobo_max_mem)
-  console.log(ram_max_mem)
 }
