@@ -79,7 +79,7 @@ btn.addEventListener("click", () => {
 
 function saveBtn() {
   var savpnl = document.getElementById("savepnl");
-  if (savpnl.style["display"] === "none") {
+  if (savpnl.style["display"] == "none" || " ") {
     savpnl.style.display="flex";
   } else {
     savpnl.style["background"] = "flex";
@@ -106,7 +106,7 @@ function closeSave() {
 
 function popupApp(currentApp)  {
   var popupPnl = document.getElementById("popupPnl");
-  if (popupPnl.style["display"] === "none") {
+  if (popupPnl.style["display"] == "none" || " ") {
     popupPnl.style.display="flex";
   } else {
     popupPnl.style["background"] = "flex";
