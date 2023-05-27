@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import  APPLICATION, CPU, CPU_COOLER, MOTHERBOARD, RAM, GPU, STORAGE, PSU, CASE, SAVED_BUILD, MAIN_BUILD
 
+from django.db.models import Q
+
 # Create your views here.
 #function seeks for the html file within the pages directory
 def index(request):
@@ -12,6 +14,14 @@ def browsebuilds(request):
     BUILD_list = MAIN_BUILD.objects.all()
     
     return render(request, 'browse-builds.html', { 'BUILD_list' : BUILD_list})
+
+def get_results(request):
+    query = request.GET.get("q")
+    BUILD_list = MAIN_BUILD.objects.filter(
+        Q(name__icontains=query)
+    )
+
+    return render(request, 'browse-builds.html', { 'BUILD_list' : BUILD_list })
 
 def buildpc(request):
     CPU_list = CPU.objects.all()
