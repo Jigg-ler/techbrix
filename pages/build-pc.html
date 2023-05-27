@@ -154,7 +154,7 @@
                             <select onchange="functions_on_change()" id="mobo" name="mobo" placeholder="Choose a Motherboard">
                                     <option value="none!0">Choose a Motherboard</option>
                                 {% for mobo in MOBO_list %} 
-                                    <option value="{{mobo.model}}!{{mobo.price}}!{{mobo.socket}}!{{mobo.gen}}!{{mobo.max_mem}}!{{mobo.ddr_gen}}!{{mobo.formfactor}}">{{mobo.model}} - PHP{{mobo.price}}</option> 
+                                    <option value="{{mobo.model}}!{{mobo.price}}!{{mobo.socket}}!{{mobo.gen}}!{{mobo.max_mem}}!{{mobo.formfactor}}">{{mobo.model}} - PHP{{mobo.price}}</option> 
                                 {% endfor %}
 
                             </select>
@@ -198,7 +198,7 @@
                             <select onchange="functions_on_change()" id="memory" name="memory" placeholder="Choose a Memory">
                                     <option value="none!0">Choose a Memory</option>
                                 {% for ram in RAM_list %} 
-                                    <option value="{{ram.model}}!{{ram.price}}!{{ram.capacity}}!pass!{{ram.capacity}}!{{ram.ddr_gen}}">{{ram.model}} - PHP{{ram.price}}</option> 
+                                    <option value="{{ram.model}}!{{ram.price}}!{{ram.capacity}}">{{ram.model}} - PHP{{ram.price}}</option> 
                                 {% endfor %}
 
                             </select>
