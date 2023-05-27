@@ -25,3 +25,5 @@ techbrix_pcbuilder/__pycache__/wsgi.cpython-311.pyc
 pcbuilder/migrations/__pycache__/0013_alter_case_options_alter_cpu_options_and_more.cpython-311.pyc
 *.pyc
 *.pyc
+*.pyc
+*.pyc
