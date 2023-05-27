@@ -695,7 +695,6 @@ img {
   letter-spacing: calc((100vh * 0.044) * 0.075);
   font-size: max((var(--nav-width) * 0.09));
   border: none;
-  border-bottom: calc(100vw * 0.005) solid var(--neon-green);
   width: calc(0.375 * 100vw);
   margin: 0 auto;
 
@@ -834,6 +833,43 @@ img {
   text-align:center
 }
 
+::placeholder {
+  color: #fff;
+  opacity: 0.7; 
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+}
+
+svg {
+  color: #fff;
+  fill: currentColor;
+  width: 44px;
+  height: 44px;
+}
+
+input {
+  all: unset;
+  font: 16px system-ui;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  padding: 6px 10px;
+}
+
+form {
+  background-color: var(--pink);
+  width: 30%;
+  height: 20%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 /* Responsive Styles (Mobile display) */
 @media screen and (min-width: 960px) {

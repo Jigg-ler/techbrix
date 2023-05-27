@@ -299,8 +299,3 @@ function test_compatibility() {
   }
 
 }
-
-function functions_on_change() {
-  getPrice();
-  test_compatibility();
-}
