@@ -274,7 +274,7 @@ function test_compatibility() {
 
       //  status generator
       if (success == 0) {
-        comp_status = cpu_model + " is incompatible with " + mobo_model + "<br>";
+        comp_status = cpu_model + " is incompatible with " + mobo_model + " (chipset mismatched)<br>";
       }
       else {
         if (is_intel) { //  need BIOS updated Intel boards
@@ -293,7 +293,7 @@ function test_compatibility() {
       }
     }
     else { // incompatible socket catch
-      comp_status = cpu_model + " is incompatible with " + mobo_model + "(socket mismatched)<br>";
+      comp_status = cpu_model + " is incompatible with " + mobo_model + " (socket mismatched)<br>";
       // console.log("socket mismatch")
     }
 
