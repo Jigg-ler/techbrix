@@ -78,6 +78,7 @@ class STORAGE(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
     form = models.CharField(max_length=10)
+    capacity = models.IntegerField(default=1000) #in gigabytes nalang
 
     def __str__(self):
         return self.model
