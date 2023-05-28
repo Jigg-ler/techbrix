@@ -172,7 +172,8 @@ function searchComponentInStore(componentId, buttonId) {
     easypc: `https://easypc.com.ph/pages/search-results-page?q=${temp}`,
     datablitz: `https://ecommerce.datablitz.com.ph/search?type=product&q=${temp}`,
     pcexpress: `https://pcx.com.ph/?s=${temp}&id=120558&post_type=product`,
-    pchub: `https://pchubonline.com/browse?q=${temp}`
+    pchub: `https://pchubonline.com/browse?q=${temp}`,
+    amazon: `https://www.amazon.com/s?k=${temp}`
   };
   
   console.log(buttonId);
