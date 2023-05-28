@@ -258,7 +258,7 @@ function test_compatibility() {
       //  chip set check
       for (let z = 0; z < mobo_chipset.length; z++) {
         if (cpu_gen == mobo_chipset[z]) {
-          console.log("chipset matched!")
+          // console.log("chipset matched!")
           success += 1;
         }
 
@@ -268,7 +268,7 @@ function test_compatibility() {
         }
 
         else{ //  chipset mismatch catch
-          console.log("chipset mismatch")
+          //console.log("chipset mismatch")
         }
       }
 
@@ -280,21 +280,21 @@ function test_compatibility() {
         if (is_intel) { //  need BIOS updated Intel boards
           if (need_update && parseInt(cpu_gen.slice(0,-1)) % 2 == 1) {
             comp_status = mobo_model + " might need BIOS update to work with " + cpu_model + "<br>";
-            console.log(success);
+            //console.log(success);
           }
         }
 
-        if (is_amd) { //  need BIOS update AMD boards, usually kasi 3000 series ng AMD yung kailangan ng update
-          if (need_update && parseInt(cpu_gen.slice(0)) == 3) {
+        if (is_amd) { //  need BIOS update AMD boards, usually kasi 3000-4000 series ng AMD yung kailangan ng update kapag a320
+          if (need_update && (cpu_gen.slice(0,-1) == 3 || cpu_gen.slice(0,-1) == 4 || cpu_gen.slice(0,-1) == 5)) {
             comp_status = mobo_model + " might need BIOS update to work with " + cpu_model + "<br>";
-            console.log(success);
+            //console.log(success);
           }
         }
       }
     }
     else { // incompatible socket catch
       comp_status = cpu_model + " is incompatible with " + mobo_model + "(socket mismatched)<br>";
-      console.log("socket mismatch")
+      // console.log("socket mismatch")
     }
 
     // RAM check
@@ -320,7 +320,19 @@ function test_compatibility() {
 
   document.getElementById("compCheck").innerHTML = comp_status;
 
+  // for debugging
+  console.log("CPU info");
+  console.log(cpu_model);
+  console.log(cpu_socket);
+  console.log(cpu_gen);
+  console.log("-------")
+  console.log("MOBO info");
+  console.log(mobo_model);
+  console.log(mobo_socket);
+  console.log(mobo_chipset);
+  console.log(mobo_max_mem);
   console.log(mobo_ddr_gen);
+
 }
 
 function functions_on_change() {
