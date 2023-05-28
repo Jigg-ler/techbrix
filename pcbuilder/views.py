@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import  APPLICATION, CPU, CPU_COOLER, MOTHERBOARD, RAM, GPU, STORAGE, PSU, CASE, SAVED_BUILD, MAIN_BUILD
 
+from django.db.models import Q
+
 # Create your views here.
 #function seeks for the html file within the pages directory
 def index(request):
@@ -12,6 +14,14 @@ def browsebuilds(request):
     BUILD_list = MAIN_BUILD.objects.all()
     
     return render(request, 'browse-builds.html', { 'BUILD_list' : BUILD_list})
+
+def searchbuilds(request):
+    query = request.GET.get("q")
+    BUILD_list = MAIN_BUILD.objects.filter(
+        Q(name__icontains=query) | Q(CPU__icontains=query) | Q(CPU_COOLER__icontains=query) | Q(MOTHERBOARD__icontains=query) | Q(RAM__icontains=query) | Q(GPU__icontains=query) | Q(STORAGE__icontains=query) | Q(PSU__icontains=query) | Q(CASE__icontains=query)
+    )
+
+    return render(request, 'browse-builds.html', { 'BUILD_list' : BUILD_list })
 
 def buildpc(request):
     CPU_list = CPU.objects.all()
@@ -73,6 +83,14 @@ def save_pc(request):
 
 def sysreqsdb(request):
     APPLICATION_list = APPLICATION.objects.all()
+
+    return render(request, 'sysreqs-db.html', { 'APPLICATION_list' : APPLICATION_list})
+
+def searchapps(request):
+    query = request.GET.get("q")
+    APPLICATION_list = APPLICATION.objects.filter(
+        Q(name__icontains=query) | Q(CPU__icontains=query) | Q(RAM__icontains=query) | Q(OS__icontains=query) | Q(GPU__icontains=query) | Q(DISK_SPACE__icontains=query)
+    )
 
     return render(request, 'sysreqs-db.html', { 'APPLICATION_list' : APPLICATION_list})
 

@@ -8,5 +8,7 @@ urlpatterns = [
     path('build-pc', views.buildpc, name='build-pc'),
     path('sysreqs-db', views.sysreqsdb, name='sysreqs-db'),
     path('build-pc/', views.save_pc, name='save_pc'),
-    path('ar/', views.ar, name='ar-guide')
+    path('ar/', views.ar, name='ar-guide'),
+    path('browse-builds/search', views.searchbuilds, name="search_builds"),
+    path('sysreqs-db/search', views.searchapps, name="search_apps")
     ]
