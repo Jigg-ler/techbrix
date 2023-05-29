@@ -21,7 +21,7 @@ class MOTHERBOARD(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
 
-    gen = models.CharField(max_length=10)
+    gen = models.CharField(max_length=30)
     socket = models.CharField(max_length=10, default='NOT  SET')
     max_mem = models.IntegerField(default=0)
 
@@ -78,6 +78,7 @@ class STORAGE(models.Model):
     model = models.CharField(max_length=100)
     price = models.IntegerField()
     form = models.CharField(max_length=10)
+    capacity = models.IntegerField(default=1000) #in gigabytes nalang
 
     def __str__(self):
         return self.model
