@@ -379,6 +379,7 @@ img {
   width: calc(0.29 * 8vw);
   margin: 8px;
   background: rgba(80,80,80,0.0);
+  cursor: pointer;
 }
 
 .collapsible-content button:hover .popup{
@@ -399,7 +400,8 @@ img {
   width: calc(0.29 * 10vw);
   transition: 0.3s;
   border-radius: 10px;
-  margin-left: calc(0.02 * 10vw)
+  margin-left: calc(0.02 * 10vw);
+  cursor: pointer;
 }
 
 
@@ -588,6 +590,10 @@ img {
   border-radius: 20px;
 }
 
+.save-panel ::placeholder {
+  color: var(--demi-gray);
+}
+
 .save-panel input:hover {
   background-color: white;
 }
@@ -620,6 +626,7 @@ img {
   border-radius: 20px;
 }
 
+
 .savebtns {
   display: flex;
   flex-direction: row;
@@ -639,6 +646,18 @@ img {
   cursor: pointer;
   transition: all 0.3s;
   border-radius: 20px;
+}
+
+.savebtns button:disabled {
+  background-color: var(--demi-gray);
+  color: var(--pastel-white);
+  cursor: default;
+}
+
+.savebtns button:disabled:hover {
+  background-color: var(--demi-gray);
+  color: var(--pastel-white);
+  cursor: default;
 }
 
 .savebtns button:hover {
