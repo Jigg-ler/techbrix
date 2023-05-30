@@ -339,17 +339,19 @@ function test_compatibility() {
   // for debugging
   console.log("CPU info");
   console.log(cpu_model);
-  console.log(cpu_socket);
-  console.log(cpu_gen);
+  console.log("Socket: " + cpu_socket);
+  console.log("Chipset: " + cpu_gen);
   console.log("-------")
   console.log("MOBO info");
   console.log(mobo_model);
-  console.log(mobo_socket);
-  console.log(mobo_chipset);
-  console.log(mobo_max_mem);
-  console.log(mobo_ddr_gen);
+  console.log("Socket: " + mobo_socket);
+  console.log("Chipset: " + mobo_chipset);
+  console.log("Max memory supp: " + mobo_max_mem);
+  console.log("Memory ddr gen: " + mobo_ddr_gen);
   console.log("FormF: " + String(mobo_form_factor))
-
+  console.log("-------")
+  console.log("Case info");
+  console.log(case_model);
   console.log("case " + String(case_form_factor))
 
 
