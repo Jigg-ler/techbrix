@@ -51,6 +51,11 @@ function get_component_ddr_gen(component) { // for mobo and ram
   return component_socket[5];
 }
 
+function get_component_form_factor(component) {
+  var component_socket = component.split("!");
+  return component_socket[6]
+}
+
 function get_all_selected_component() {
   var cpu_selected = document.getElementById("cpu").value;
   var cooler_selected = document.getElementById("cpu-cooler").value;
@@ -212,6 +217,7 @@ function test_compatibility() {
   var cpu_model = get_component_model(document.getElementById("cpu").value);
   var mobo_model = get_component_model(document.getElementById("mobo").value);
   var memory_model = get_component_model(document.getElementById("memory").value);
+  var case_model = get_component_model(document.getElementById("case").value);
 
   var cpu_gen = get_component_gencode(document.getElementById("cpu").value);
   var mobo_chipset = get_component_gencode(document.getElementById("mobo").value).split("-");
@@ -224,6 +230,9 @@ function test_compatibility() {
 
   var mobo_ddr_gen = get_component_ddr_gen(document.getElementById("mobo").value).split("-");
   var memory_ddr_gen = get_component_ddr_gen(document.getElementById("memory").value);
+
+  var mobo_form_factor = get_component_form_factor(document.getElementById("mobo").value);
+  var case_form_factor = get_component_form_factor(document.getElementById("case").value);
   
   //var test_string = cpu_model + " " + cpu_gen + "<br>" + mobo_model + " " + mobo_chipset + "<br>";
   
@@ -319,6 +328,12 @@ function test_compatibility() {
     document.getElementById("compCheck").innerHTML = "";
   }
 
+  if (mobo_model && case_model){
+    if (mobo_form_factor > case_form_factor){
+      comp_status += mobo_model + " may not fit in " + case_model;
+    }
+  }
+
   document.getElementById("compCheck").innerHTML = comp_status;
 
   // for debugging
@@ -333,6 +348,10 @@ function test_compatibility() {
   console.log(mobo_chipset);
   console.log(mobo_max_mem);
   console.log(mobo_ddr_gen);
+  console.log("FormF: " + String(mobo_form_factor))
+
+  console.log("case " + String(case_form_factor))
+
 
 }
 

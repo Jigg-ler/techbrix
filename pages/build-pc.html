@@ -365,10 +365,10 @@
                             <div class="flex-row">
                             <label for="case">Case</label>
 
-                            <select onchange="getPrice()" id="case" name="case" placeholder="Choose a Case">
+                            <select onchange="functions_on_change()" id="case" name="case" placeholder="Choose a Case">
                                     <option value="none!0">Choose a Case</option>
                                 {% for case in CASE_list %} 
-                                    <option value="{{case.model}}!{{case.price}}">{{case.model}} - PHP{{case.price}}</option> 
+                                    <option value="{{case.model}}!{{case.price}}!pass!pass!pass!pass!{{case.form_supp}}">{{case.model}} - PHP{{case.price}}</option> 
                                 {% endfor %}
 
                             </select>
