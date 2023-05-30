@@ -18,7 +18,7 @@ def browsebuilds(request):
 def searchbuilds(request):
     query = request.GET.get("q")
     BUILD_list = MAIN_BUILD.objects.filter(
-        Q(name__icontains=query) | Q(CPU__icontains=query) | Q(CPU_COOLER__icontains=query) | Q(MOTHERBOARD__icontains=query) | Q(RAM__icontains=query) | Q(GPU__icontains=query) | Q(STORAGE__icontains=query) | Q(PSU__icontains=query) | Q(CASE__icontains=query)
+        Q(name__icontains=query) | Q(CPU__icontains=query) | Q(CPU_COOLER__icontains=query) | Q(MOTHERBOARD__icontains=query) | Q(RAM__icontains=query) | Q(GPU__icontains=query) | Q(STORAGE__icontains=query) | Q(PSU__icontains=query) | Q(CASE__icontains=query) | Q(author__icontains=query)
     )
 
     return render(request, 'browse-builds.html', { 'BUILD_list' : BUILD_list })
