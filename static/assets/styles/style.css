@@ -377,14 +377,16 @@ img {
   position: relative;
   border: none;
   width: calc(0.29 * 8vw);
-  margin: 8px;
+  margin-right: calc(0.2 * 10vw);
+  margin-top: calc(0.05 * 10vw);
+  margin-bottom: calc(0.05 * 10vw);
   background: rgba(80,80,80,0.0);
   cursor: pointer;
 }
 
 .collapsible-content button:hover .popup{
   opacity: 1;
-  display: block;
+  display: flex;
 }
 
 
@@ -415,7 +417,7 @@ img {
   max-width: 100px;
   height: auto;
   background-color: var(--pink);
-  padding: 1px 20px;
+  padding: 4px 15px;
   position: absolute;
   
   transition: all 0.25s ease;
@@ -423,7 +425,8 @@ img {
   display: none;
   animation: in-animation 0.25s ease;
   border-radius: 5px;
-  margin-bottom: 5px;
+  bottom: -10px;
+  left: 20px;
   z-index: 1;
 }
 
